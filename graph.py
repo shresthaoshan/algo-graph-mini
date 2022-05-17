@@ -70,10 +70,10 @@ class Graph:
 
     def recommendProductsBuy(self, product: Node):   
         recommendation: List[Tuple[int, int]] = []
-        for src, _ in enumerate(self.adj):
-            for adjItem in self.adj[src]:
-                if adjItem.node == product:
-                    recommendation.append((src + 1, adjItem.weight))
+
+        for reco in self.adj[product.name]:
+            recommendation.append((reco.node.name + 1, reco.weight))
+        
         # sort in descending order on the basis of edge weight
         recommendations = sorted(recommendation, key=lambda x:x[1], reverse= True)
         print("\nRecommending for: " + str(product.name + 1))
