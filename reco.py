@@ -46,4 +46,4 @@ if __name__ == '__main__':
 
     # start reco
     # prodForReco = int(input("Enter product for recommendation: "))
-    graph.recommendProductsBuy(products[int(sys.argv[1])])
+    graph.recommendProductsBuy(products[int(sys.argv[1]) if len(sys.argv) == 2 else 2])
