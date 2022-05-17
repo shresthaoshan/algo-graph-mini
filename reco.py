@@ -3,9 +3,9 @@ from graph import Edge, Graph, Node
 
 def printGraph(graph: Graph):
     print("\nGRAPH")
-    for src in range(len(graph.adj)):
+    for src in range(len(graph.adjacentMatrix)):
         # print current vertex and all its neighboring vertices
-        print(src + 1, "->" , [(adjItem.node.name + 1, adjItem.weight) for adjItem in graph.adj[src]])
+        print(src + 1, "->" , [(adjItem.node.name + 1, adjItem.weight) for adjItem in graph.adjacentMatrix[src]])
 
 if __name__ == '__main__':
     # input products
@@ -46,4 +46,4 @@ if __name__ == '__main__':
 
     # start reco
     # prodForReco = int(input("Enter product for recommendation: "))
-    graph.recommendProductsBuy(products[int(sys.argv[1]) if len(sys.argv) == 2 else 2])
+    graph.recommendProducts(products[(int(sys.argv[1]) - 1) if len(sys.argv) == 2 else 2])
