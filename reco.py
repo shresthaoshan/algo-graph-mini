@@ -5,7 +5,7 @@ def printGraph(graph: Graph):
     print("\nGRAPH")
     for src in range(len(graph.adj)):
         # print current vertex and all its neighboring vertices
-        print(src + 1, "->" , [(adjItem.node.name, adjItem.weight) for adjItem in graph.adj[src]])
+        print(src + 1, "->" , [(adjItem.node.name + 1, adjItem.weight) for adjItem in graph.adj[src]])
 
 if __name__ == '__main__':
     # input products
