@@ -1,3 +1,4 @@
+import sys
 from graph import Edge, Graph, Node
 
 def printGraph(graph: Graph):
@@ -16,24 +17,18 @@ if __name__ == '__main__':
         Node(4), #V5
         Node(5), #V6
     ]
-    # buy products
+    
     edges = []
-    # a person buys v1 and v2
     edges.append(Edge(products[0], products[1], 2))
-    # 6 persons buy v1 and v5
     edges.append(Edge(products[0], products[4], 3))
     edges.append(Edge(products[0], products[2], 2))
-
     edges.append(Edge(products[1], products[2], 4))
     edges.append(Edge(products[1], products[4], 1))
     edges.append(Edge(products[1], products[3], 4))
-
     edges.append(Edge(products[2], products[3], 2))
     edges.append(Edge(products[2], products[5], 1))
-
     edges.append(Edge(products[3], products[4], 4))
     edges.append(Edge(products[3], products[5], 5))
-
     edges.append(Edge(products[4], products[5], 2))
 
     # construct graph from given list of edges
@@ -51,4 +46,4 @@ if __name__ == '__main__':
 
     # start reco
     # prodForReco = int(input("Enter product for recommendation: "))
-    graph.recommendProductsBuy( products[3])
+    graph.recommendProductsBuy(products[int(sys.argv[1])])
