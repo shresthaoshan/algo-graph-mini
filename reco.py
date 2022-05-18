@@ -1,11 +1,5 @@
 import sys
-from graph import Edge, Graph, Node
-
-def printGraph(graph: Graph):
-    print("\nGRAPH")
-    for src in range(len(graph.adjacentMatrix)):
-        # print current vertex and all its neighboring vertices
-        print(src + 1, "->" , [(adjItem.node.name + 1, adjItem.weight) for adjItem in graph.adjacentMatrix[src]])
+from graph import Edge, Graph, Node, printGraph
 
 if __name__ == '__main__':
     # input products

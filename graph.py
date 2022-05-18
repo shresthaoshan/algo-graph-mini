@@ -67,17 +67,26 @@ class Graph:
                     # if not add new edge
                     if not hasAlreadyEdge:
                         self.addNewEdge(Edge(products[i], products[j], 1))
+                        
+    def getWeight(self, cell: AdjacencyItem):
+        return cell.weight
 
-    def recommendProducts(self, product: Node):   
-        recommendation: List[Tuple[int, int]] = []
-
-        for reco in self.adjacentMatrix[product.name]:
-            recommendation.append((reco.node.name + 1, reco.weight))
+    def recommendProducts(self, product: Node):
+        recommendation: List[AdjacencyItem] = self.adjacentMatrix[product.name]
         
         # sort in descending order on the basis of edge weight
-        recommendations = sorted(recommendation, key=lambda x:x[1], reverse= True)
+        # worst/average O(nlogn) - best O(n)
+        # Timsort (hybrid stable sorting algorithm)
+        recommendations: List[AdjacencyItem] = sorted(recommendation, key=self.getWeight, reverse= True)
         
         print("\nRecommending for: Product " + str(product.name + 1))
         print("\nRecommeded Products:\nProduct\t: Score")
         for item in recommendations:
-            print("   {}\t:   {}".format(item[0], item[1]))
+            print("   {}\t:   {}".format(item.node.name + 1, item.weight))
+
+def printGraph(graph: Graph):
+    print("\nGRAPH")
+    for src in range(len(graph.adjacentMatrix)):
+        # print current vertex and all its neighboring vertices
+        print(src + 1, "->" , [(adjItem.node.name + 1, adjItem.weight) for adjItem in graph.adjacentMatrix[src]])
+        
